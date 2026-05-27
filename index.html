@@ -3,24 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="Can Cross-Layer Transcoders Replace Vision Transformer Activations? An Interpretable Perspective on Vision. CVPR 2026 Spotlight (XAI4CV Workshop).">
+  <meta name="keywords" content="Cross-Layer Transcoders, CLT, Vision Transformer, ViT, Interpretability, Sparse Autoencoders, CLIP, XAI4CV, CVPR 2026">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+  <title>Can Cross-Layer Transcoders Replace Vision Transformer Activations?</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -39,48 +25,115 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <style>
+    .copy-email {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(10, 10, 10, 0.42);
+      padding: 0 0.2rem;
+      margin-left: 0.15rem;
+      font-size: 0.78em;
+      vertical-align: baseline;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+    .copy-email:hover { color: #7a1416; transform: translateY(-1px); }
+    .copy-email:active { transform: translateY(0); }
+    .copy-email.copied { color: #2a7d2e; }
+    .otw-badge {
+      display: inline-block;
+      margin-left: 0.4rem;
+      padding: 0.08rem 0.5rem;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.62em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #1f6b2a;
+      background: rgba(42, 125, 46, 0.12);
+      border: 1px solid rgba(42, 125, 46, 0.45);
+      border-radius: 999px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      white-space: nowrap;
+    }
+    .otw-badge::before {
+      content: "";
+      display: inline-block;
+      width: 0.45em;
+      height: 0.45em;
+      border-radius: 50%;
+      background: #2a8d34;
+      margin-right: 0.35em;
+      vertical-align: 0.1em;
+      box-shadow: 0 0 0 0 rgba(42, 141, 52, 0.6);
+      animation: otw-pulse 1.8s infinite;
+    }
+    @keyframes otw-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(42, 141, 52, 0.55); }
+      70% { box-shadow: 0 0 0 6px rgba(42, 141, 52, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(42, 141, 52, 0); }
+    }
+    .otw-callout {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.35rem 0.85rem 0.35rem 0.55rem;
+      background: rgba(42, 125, 46, 0.07);
+      border: 1px solid rgba(42, 125, 46, 0.32);
+      border-radius: 999px;
+    }
+    .otw-callout .otw-badge { margin-left: 0; }
+    .otw-names {
+      font-size: 0.95rem;
+      color: #1f6b2a;
+      font-weight: 500;
+    }
+    .otw-names a {
+      color: #1f6b2a;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(31, 107, 42, 0.45);
+    }
+    .otw-names a:hover { border-bottom-color: #1f6b2a; }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: auto 1fr;
+      gap: 1.25rem 2rem;
+    }
+    .insight-card {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 2;
+      gap: 0.5rem;
+      border-left: 3px solid #7a1416;
+      padding: 0.1rem 1.25rem;
+    }
+    .insight-title { margin: 0; line-height: 1.3; text-wrap: balance; }
+    .insight-body {
+      margin: 0;
+      line-height: 1.55;
+      color: rgba(10,10,10,0.78);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: none;
+    }
+    .insight-body code,
+    .insight-title code { white-space: nowrap; }
+    @supports not (grid-template-rows: subgrid) {
+      .insight-card {
+        grid-row: span 1;
+        grid-template-rows: auto;
+      }
+    }
+    @media (max-width: 768px) {
+      .insight-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
 
 
 <section class="hero">
@@ -88,39 +141,55 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-2 publication-title">Can Cross-Layer Transcoders <i>Replace</i> Vision Transformer Activations?</h1>
+          <h2 class="subtitle is-4 publication-title"><i>An Interpretable Perspective on Vision</i></h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="https://yerassimos.com" target="_blank" rel="noopener">Gerasimos Chatzoudis</a><sup>1</sup><button class="copy-email" data-email="gc745@scarletmail.rutgers.edu" title="Copy email" aria-label="Copy Gerasimos Chatzoudis email"><i class="far fa-envelope"></i></button>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="https://sites.google.com/view/konstantinos-d-polyzos-page/home" target="_blank" rel="noopener">Konstantinos D. Polyzos</a><sup>2</sup><button class="copy-email" data-email="kpolyzos@ucsd.edu" title="Copy email" aria-label="Copy Konstantinos Polyzos email"><i class="far fa-envelope"></i></button>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+              <a href="https://lzvv123456.github.io/" target="_blank" rel="noopener">Zhuowei Li</a><sup>1*</sup>,
             </span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+              <a href="https://scholar.google.com/citations?user=nKuyKx0AAAAJ&amp;hl=en" target="_blank" rel="noopener">Difei Gu</a><sup>1</sup>
             </span>
           </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.gemma-moran.com/" target="_blank" rel="noopener">Gemma E. Moran</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.wanghao.in/" target="_blank" rel="noopener">Hao Wang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=a7VNhCIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Dimitris N. Metaxas</a><sup>1</sup>
+            </span>
+          </div>
+          <div class="otw-callout" style="margin-top: 0.7rem;">
+            <span class="otw-badge" title="Open to work">open to work</span>
+            <span class="otw-names"><a href="https://yerassimos.com" target="_blank" rel="noopener">Gerasimos Chatzoudis</a> &amp; <a href="https://sites.google.com/view/konstantinos-d-polyzos-page/home" target="_blank" rel="noopener">Konstantinos D. Polyzos</a></span>
+          </div>
+          <div id="copy-toast" role="status" aria-live="polite" style="position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(20px); background: #0a0a0a; color: #f6f4ee; padding: 0.55rem 1rem; border-radius: 999px; font-size: 0.9rem; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; z-index: 100; font-family: 'JetBrains Mono', ui-monospace, monospace;">Copied</div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>Rutgers University,</span>
+            <span class="author-block"><sup>2</sup>University of California San Diego</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Work done outside of Amazon</span>
+          </div>
+
+          <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+            <span class="author-block"><b>CVPR 2026 Spotlight</b> &middot; XAI4CV Workshop &middot; Denver, Colorado &middot; June 2026</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
+              <!-- Paper Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href="./xai4cv_spotlight_paper.pdf"
+                   target="_blank" rel="noopener"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -128,8 +197,10 @@
                   <span>Paper</span>
                 </a>
               </span>
+              <!-- arXiv Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="https://arxiv.org/abs/2604.13304"
+                   target="_blank" rel="noopener"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -137,35 +208,17 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
+              <!-- Poster Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                <a href="./xai4cv_spotlight_poster.pdf"
+                   target="_blank" rel="noopener"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fab fa-youtube"></i>
+                      <i class="fas fa-image"></i>
                   </span>
-                  <span>Video</span>
+                  <span>Poster</span>
                 </a>
               </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
             </div>
 
           </div>
@@ -174,77 +227,18 @@
     </div>
   </div>
 </section>
+
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
+      <img src="./static/images/clt_figure.png" alt="Overview of the Cross-Layer Transcoder (CLT) framework: training CLTs to predict post-MLP activations, using them as a replacement model at inference, and using them as an interpretable proxy for ViTs." style="width: 100%; height: auto;"/>
+      <p class="figure-caption" style="margin: 1rem auto 0; max-width: 880px; font-size: 0.95rem; line-height: 1.5; color: rgba(10,10,10,0.72); text-align: left;">
+        <b>Figure 1.</b> Overview of the Cross-Layer Transcoder (CLT) framework.
+        <b>Left:</b> each CLT encodes LN2 activations into sparse codes <i>z<sub>&ell;</sub></i> and reconstructs MLP outputs <i>y<sub>&ell;</sub></i> via triangular decoders.
+        <b>Middle:</b> at inference, CLTs replace MLPs across layers, preserving zero-shot performance.
+        <b>Right:</b> CLTs serve as an interpretable proxy for ViTs to understand the cross-layer contributions of different token types and identify the most significant layers in shaping the ViT's final representations.
+      </p>
     </div>
   </div>
 </section>
@@ -252,190 +246,38 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
+
+    <!-- TL;DR. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
-          </p>
-        </div>
+        <p class="is-size-4" style="line-height: 1.5; max-width: 760px; margin: 0 auto; text-wrap: balance;">
+          Cross-Layer Transcoders <b>replace</b> ViT MLPs without hurting zero-shot accuracy,
+          and reveal <b>which layers</b> actually build the final representation.
+        </p>
       </div>
     </div>
-    <!--/ Abstract. -->
+    <!--/ TL;DR. -->
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
+    <!-- Insight cards. -->
+    <div class="insight-grid" style="margin-top: 3rem;">
+      <div class="insight-card">
+        <p class="insight-title is-size-5"><b>Functional Replacement.</b></p>
+        <p class="insight-body is-size-6">CLTs can replace MLP blocks, especially in <b>later layers</b> for patches or for the <code>[CLS]</code> token <b>across all layers</b>, preserving and in some cases even improving zero-shot classification performance.</p>
+      </div>
+      <div class="insight-card">
+        <p class="insight-title is-size-5"><b>Patch granularity matters.</b></p>
+        <p class="insight-body is-size-6">ViT-B/16 reconstruction is more faithful than ViT-B/32. Smaller patches distribute information across more tokens, yielding simpler per-token activations that are easier to approximate.</p>
+      </div>
+      <div class="insight-card">
+        <p class="insight-title is-size-5"><b><code>[CLS]</code> integrates across depth; patches remain local.</b></p>
+        <p class="insight-body is-size-6">Patch tokens show <b>diagonal attribution</b>, while <code>[CLS]</code> draws credit from many preceding layers.</p>
+      </div>
+      <div class="insight-card">
+        <p class="insight-title is-size-5"><b>Necessary and sufficient attribution layers.</b></p>
+        <p class="insight-body is-size-6">The <b>top-4</b> attributed layers recover accuracy, while removing the highest-scored layer causes substantial degradation.</p>
       </div>
     </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
+    <!--/ Insight cards. -->
 
   </div>
 </section>
@@ -444,11 +286,12 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@inproceedings{chatzoudis2026clt,
+  author    = {Chatzoudis, Gerasimos and Polyzos, Konstantinos D. and Li, Zhuowei and Gu, Difei and Moran, Gemma E. and Wang, Hao and Metaxas, Dimitris N.},
+  title     = {Can Cross-Layer Transcoders Replace Vision Transformer Activations? An Interpretable Perspective on Vision},
+  booktitle = {CVPR Workshop on Explainable AI for Computer Vision (XAI4CV)},
+  year      = {2026},
+  note      = {Spotlight}
 }</code></pre>
   </div>
 </section>
@@ -458,33 +301,74 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
+         href="./xai4cv_spotlight_paper.pdf">
         <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
       </a>
     </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
           <p>
+            <b>Corresponding Authors:</b>
+            <a href="#" class="copy-email-link" data-email="gc745@cs.rutgers.edu">Gerasimos Chatzoudis (gc745@cs.rutgers.edu)</a>
+            &amp;
+            <a href="#" class="copy-email-link" data-email="kpolyzos@ucsd.edu">Konstantinos D. Polyzos (kpolyzos@ucsd.edu)</a>
+          </p>
+          <p>
             This website is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            The source template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
           </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var toast = document.getElementById('copy-toast');
+    var toastTimer = null;
+    function showToast(msg) {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(20px)';
+      }, 1400);
+    }
+    document.querySelectorAll('.copy-email, .copy-email-link').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var email = btn.getAttribute('data-email');
+        if (!email) return;
+        var done = function () {
+          btn.classList.add('copied');
+          showToast(email + ' copied');
+          setTimeout(function () { btn.classList.remove('copied'); }, 1200);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(done, function () {
+            window.prompt('Copy email:', email);
+          });
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = email;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); done(); } catch (err) { window.prompt('Copy email:', email); }
+          document.body.removeChild(ta);
+        }
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
